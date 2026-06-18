@@ -1,0 +1,6 @@
+{
+  "name": "Arnold Gym",
+  "description": "Arnold Gym membership registration, plans display, and admin panel with backend Express services and MongoDB Atlas integration.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

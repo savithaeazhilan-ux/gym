@@ -1,0 +1,20 @@
+[
+  {
+    "_id": "101",
+    "planName": "Monthly",
+    "price": 1500,
+    "duration": "1 Month"
+  },
+  {
+    "_id": "102",
+    "planName": "Quarterly",
+    "price": 4000,
+    "duration": "3 Months"
+  },
+  {
+    "_id": "103",
+    "planName": "Annual",
+    "price": 12000,
+    "duration": "12 Months"
+  }
+]
