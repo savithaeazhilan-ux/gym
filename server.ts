@@ -4,7 +4,7 @@ import express from "express";
 import cors from "cors";
 import path from "path";
 import { createServer as createViteServer } from "vite";
-import { dbOperations } from "./lib/db";
+import { dbOperations } from "./api/db";
 
 async function startServer() {
   const app = express();
