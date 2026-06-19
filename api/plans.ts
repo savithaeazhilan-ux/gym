@@ -36,10 +36,11 @@ export default async function handler(
           error: "Method not allowed",
         });
     }
-  } catch (error) {
-    console.error("API /plans error:", error);
-    return res.status(500).json({
-      error: "Failed to process membership plans",
-    });
-  }
+ } catch (error: any) {
+  console.error("API /plans error:", error);
+
+  return res.status(500).json({
+    message: error?.message,
+    stack: error?.stack
+  });
 }
