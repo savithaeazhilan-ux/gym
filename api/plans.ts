@@ -17,8 +17,7 @@ export default async function handler(
 
         if (!planName || !price || !duration) {
           return res.status(400).json({
-            error:
-              "All plan fields (planName, price, duration) are required",
+            error: "All plan fields (planName, price, duration) are required",
           });
         }
 
@@ -36,11 +35,12 @@ export default async function handler(
           error: "Method not allowed",
         });
     }
- } catch (error: any) {
-  console.error("API /plans error:", error);
+  } catch (error: any) {
+    console.error("API /plans error:", error);
 
-  return res.status(500).json({
-    message: error?.message,
-    stack: error?.stack
-  });
+    return res.status(500).json({
+      message: error?.message,
+      stack: error?.stack,
+    });
+  }
 }

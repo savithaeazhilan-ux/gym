@@ -24,30 +24,40 @@ export default function Register({ planPreselected, setPlanPreselected, setCurre
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
   const [registeredMember, setRegisteredMember] = useState<Member | null>(null);
 
-  useEffect(() => {
-    const fetchDropdownPlans = async () => {
-      try {
-        const res = await fetch("/api/plans");
-        if (res.ok) {
-          const data = await res.json();
-          setPlans(data);
-          
-          // Auto select logic
-          if (planPreselected) {
-            setSelectedPlan(planPreselected);
-          } else if (data.length > 0) {
-            setSelectedPlan(data[0].planName);
-          }
-        }
-      } catch (err) {
-        console.error("Failed to load plans for dropdown", err);
-      } finally {
-        setLoadingPlans(false);
-      }
-    };
+useEffect(() => {
+  const fetchDropdownPlans = async () => {
+    try {
+      const res = await fetch("/api/plans");
 
-    fetchDropdownPlans();
-  }, [planPreselected]);
+      console.log("Status:", res.status);
+
+      if (!res.ok) {
+        const errText = await res.text();
+        console.log("API Error:", errText);
+        return;
+      }
+
+      const data = await res.json();
+
+      console.log("Plans:", data);
+
+      setPlans(data);
+
+      // Auto-select logic
+      if (planPreselected) {
+        setSelectedPlan(planPreselected);
+      } else if (data.length > 0) {
+        setSelectedPlan(data[0].planName);
+      }
+    } catch (err) {
+      console.error("Failed to load plans for dropdown", err);
+    } finally {
+      setLoadingPlans(false);
+    }
+  };
+
+  fetchDropdownPlans();
+}, [planPreselected]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
