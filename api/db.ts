@@ -1,6 +1,6 @@
 import dotenv from "dotenv";
 dotenv.config();
-
+import { dbOperations } from "./db.ts";
 import { MongoClient } from "mongodb";
 import { Member, MembershipPlan, ContactInquiry } from "../src/types";
 
